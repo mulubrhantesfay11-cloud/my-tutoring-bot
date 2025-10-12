@@ -2,6 +2,6 @@ python-telegram-bot==20.3
 gunicorn
 aiohttp
 flask
-sqlite3
 openpyxl
+
 
