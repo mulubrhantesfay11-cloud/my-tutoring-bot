@@ -46,8 +46,8 @@ TEXTS = {
         "change_lang": "🌐 Change Language",
         "cancel": "Cancel",
         "admin": "Admin Panel",
-        "stu_done": "✅ Student/Family application submitted! for more information contact us at @     ",
-        "tut_done": "✅ Tutor application submitted! for more information contact us at @     ",
+        "stu_done": "✅ Student/Family application submitted! for more information contact us at @Mentorxham    ",
+        "tut_done": "✅ Tutor application submitted! for more information contact us at @Mentorxham    ",
         "not_admin": "⛔ You are not authorized to access admin features.",
         "new_contact": "📩 New message from {name} (ID: {user_id}):",
         "menu_header": "Main Menu",
@@ -62,7 +62,7 @@ TEXTS = {
         "enter_tut_grades": "Enter grades you can teach (1-4/5-8/9-12/any grade):",
         "upload_profile": "Upload your academic profile (e.g- grade 12 result) (file/photo): then send 'done'when you finish",
         "send_to_admin": "You can ask any question or send a file/photo",
-        "contact_admin_done": "✅ Your message has been sent to the admin. for more information contact us at @     "
+        "contact_admin_done": "✅ Your message has been sent to the admin. for more information contact us at @Mentorxham   "
     },
     "ti": {
         "start": "እንኳዕ ብደሓን መጻእኹም ፤ ቋንቋ ይምረፁ።",
@@ -73,8 +73,8 @@ TEXTS = {
         "change_lang": "🌐 ቋንቋ ቀይር",
         "cancel": "አቋርጽ",
         "admin": "ናይ admin መደብ",
-        "stu_done": "✅ ናይ ተመሃሮ ምዝገባ ብ ትክክል ወዲኦም አለዉ! ን ዝበለጸ ሓበሬታ በዚ @      ይርከቡና።",
-        "tut_done": "✅ ናይ መምህር ምዝገባ ብ ትክክል ወዲኦም አለዉ! ን ዝበለጸ ሓበሬታ በዚ @      ይርከቡና።",
+        "stu_done": "✅ ናይ ተመሃሮ ምዝገባ ብ ትክክል ወዲኦም አለዉ! ን ዝበለጸ ሓበሬታ በዚ @Mentorxham ይርከቡና።",
+        "tut_done": "✅ ናይ መምህር ምዝገባ ብ ትክክል ወዲኦም አለዉ! ን ዝበለጸ ሓበሬታ በዚ @Mentorxham ይርከቡና።",
         "not_admin": "⛔ ይቅርታ admin ኣይኮኑን።",
         "new_contact": "📩 ሓደ መልእኽቲ ካብ {name} (ID: {user_id}):",
         "menu_header": "ዋና ማውጫ",
@@ -89,7 +89,7 @@ TEXTS = {
         "enter_tut_grades": "ከምህርዎም ዝኸሉ ክፍሊታት የአትዉ (1-4/5-8/9-12/ዝኾነ)",
         "upload_profile": "አካዳሚ ፕሮፋይሎም የአትዉ (አብነት- ናይ 12 ክፍሊ ውጽኢት)(ፋይል/ፎቶ):ምስ ወድኡ 'done' ኢሎም ይልአኹ።",
         "send_to_admin": "ዘለዎም መልእኽቲ ወይ ሕቶ ናብ admin ይልአኹ",
-        "contact_admin_done": "✅ መልእኽቶም ብ ትኽኽል ናብ admin ተላኢኹ። ን ዝበለጸ ሓበሬታ በዚ @      ይርከቡና።"
+        "contact_admin_done": "✅ መልእኽቶም ብ ትኽኽል ናብ admin ተላኢኹ። ን ዝበለጸ ሓበሬታ በዚ @Mentorxham ይርከቡና።"
     }
 }
 
@@ -385,3 +385,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
