@@ -353,15 +353,13 @@ async def cancel(update, context):
     return await return_to_main_menu(update, context)
 
 # ---------- Main for Vercel ----------
-from telegram.ext import Application
 from fastapi import FastAPI, Request
+from telegram import Update
 import asyncio
-import os
 
-# FastAPI app for Vercel
 app = FastAPI()
 
-# Create the Telegram bot app
+# Create Telegram app
 telegram_app = Application.builder().token(TOKEN).build()
 
 # Register handlers
@@ -391,14 +389,14 @@ conv_handler = ConversationHandler(
 telegram_app.add_handler(conv_handler)
 telegram_app.add_handler(CommandHandler("export", export_data))
 
-# Set up webhook endpoint for Vercel
-@app.post("/webhook")
+# --------- Webhook endpoint ---------
+@app.post("/")
 async def webhook(request: Request):
     update = Update.de_json(await request.json(), telegram_app.bot)
     await telegram_app.process_update(update)
     return {"ok": True}
 
-# Optional: test route
+# --------- Health check endpoint ---------
 @app.get("/")
 def home():
     return {"status": "Bot running via Vercel"}
