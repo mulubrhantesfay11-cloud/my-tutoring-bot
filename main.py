@@ -352,37 +352,54 @@ async def export_data(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def cancel(update, context):
     return await return_to_main_menu(update, context)
 
-# ---------- Main ----------
-def main():
-    app = Application.builder().token(TOKEN).build()
+# ---------- Main for Vercel ----------
+from telegram.ext import Application
+from fastapi import FastAPI, Request
+import asyncio
+import os
 
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler("start", start)],
-        states={
-            LANG_CHOICE: [CallbackQueryHandler(lang_choice)],
-            MENU: [CallbackQueryHandler(menu_handler)],
-            STU_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_name)],
-            STU_GRADE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_grade)],
-            STU_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_phone)],
-            STU_ADDRESS: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_address)],
-            STU_PREF_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_pref_gender)],
-            TUT_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_name)],
-            TUT_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_gender)],
-            TUT_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_phone)],
-            TUT_GRADES: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_grades)],
-            TUT_PROFILE_UPLOAD: [MessageHandler(filters.ALL & ~filters.COMMAND, tut_profile_upload)],
-            CONTACT_ADMIN: [MessageHandler(filters.ALL & ~filters.COMMAND, contact_admin)],
-        },
-        fallbacks=[CommandHandler("cancel", cancel)],
-        per_user=True,
-        per_chat=True,
-        allow_reentry=True
-    )
+# FastAPI app for Vercel
+app = FastAPI()
 
-    app.add_handler(conv_handler)
-    app.add_handler(CommandHandler("export", export_data))
-    app.run_polling()
+# Create the Telegram bot app
+telegram_app = Application.builder().token(TOKEN).build()
 
-if __name__ == "__main__":
-    main()
+# Register handlers
+conv_handler = ConversationHandler(
+    entry_points=[CommandHandler("start", start)],
+    states={
+        LANG_CHOICE: [CallbackQueryHandler(lang_choice)],
+        MENU: [CallbackQueryHandler(menu_handler)],
+        STU_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_name)],
+        STU_GRADE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_grade)],
+        STU_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_phone)],
+        STU_ADDRESS: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_address)],
+        STU_PREF_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_pref_gender)],
+        TUT_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_name)],
+        TUT_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_gender)],
+        TUT_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_phone)],
+        TUT_GRADES: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_grades)],
+        TUT_PROFILE_UPLOAD: [MessageHandler(filters.ALL & ~filters.COMMAND, tut_profile_upload)],
+        CONTACT_ADMIN: [MessageHandler(filters.ALL & ~filters.COMMAND, contact_admin)],
+    },
+    fallbacks=[CommandHandler("cancel", cancel)],
+    per_user=True,
+    per_chat=True,
+    allow_reentry=True
+)
+
+telegram_app.add_handler(conv_handler)
+telegram_app.add_handler(CommandHandler("export", export_data))
+
+# Set up webhook endpoint for Vercel
+@app.post("/webhook")
+async def webhook(request: Request):
+    update = Update.de_json(await request.json(), telegram_app.bot)
+    await telegram_app.process_update(update)
+    return {"ok": True}
+
+# Optional: test route
+@app.get("/")
+def home():
+    return {"status": "Bot running via Vercel"}
 
