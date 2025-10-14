@@ -60,7 +60,7 @@ TEXTS = {
         "enter_tut_gender": "Enter gender (Male/Female):",
         "enter_tut_phone": "Enter phone number:",
         "enter_tut_grades": "Enter grades you can teach (1-4/5-8/9-12/any grade):",
-        "upload_profile": "Please upload your academic profile (e.g., Grade 12 result) as a file or photo through @Mentorxham, and type "done" here after completing the upload.",
+        "upload_profile": "Please upload your academic profile (e.g., Grade 12 result) as a file or photo through @Mentorxham, and type 'done' here after completing the upload.",
         "send_to_admin": "You can ask any question or send a file/photo",
         "contact_admin_done": "✅ Your message has been sent to the admin. for more information contact us at @Mentorxham   "
     },
