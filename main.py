@@ -60,7 +60,7 @@ TEXTS = {
         "enter_tut_gender": "Enter gender (Male/Female):",
         "enter_tut_phone": "Enter phone number:",
         "enter_tut_grades": "Enter grades you can teach (1-4/5-8/9-12/any grade):",
-        "upload_profile": "Upload your academic profile (e.g- grade 12 result) (file/photo): then send 'done'when you finish",
+        "upload_profile": "Please upload your academic profile (e.g., Grade 12 result) as a file or photo through @Mentorxham, and type "done" here after completing the upload.",
         "send_to_admin": "You can ask any question or send a file/photo",
         "contact_admin_done": "✅ Your message has been sent to the admin. for more information contact us at @Mentorxham   "
     },
@@ -87,7 +87,7 @@ TEXTS = {
         "enter_tut_gender": "ፆታ የእትዉ (ተባ/አን):",
         "enter_tut_phone": "ስልኪ ቁጽሪ የእትዉ።",
         "enter_tut_grades": "ከምህርዎም ዝኸሉ ክፍሊታት የአትዉ (1-4/5-8/9-12/ዝኾነ)",
-        "upload_profile": "አካዳሚ ፕሮፋይሎም የአትዉ (አብነት- ናይ 12 ክፍሊ ውጽኢት)(ፋይል/ፎቶ):ምስ ወድኡ 'done' ኢሎም ይልአኹ።",
+        "upload_profile": "አካዳሚ ፕሮፋይሎም  (አብነት - ናይ 12 ክፍሊ ውጽኢት)(ፋይል/ፎቶ) ናብ @Mentorxham ይልኣኹ :ምስ ወድኡ ኣብዚ 'done' ኢሎም ይልአኹ።",
         "send_to_admin": "ዘለዎም መልእኽቲ ወይ ሕቶ ናብ admin ይልአኹ",
         "contact_admin_done": "✅ መልእኽቶም ብ ትኽኽል ናብ admin ተላኢኹ። ን ዝበለጸ ሓበሬታ በዚ @Mentorxham ይርከቡና።"
     }
