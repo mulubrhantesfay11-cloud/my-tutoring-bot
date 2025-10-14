@@ -1,7 +1,6 @@
-python-telegram-bot==20.3
-gunicorn
-aiohttp
-flask
+python-telegram-bot==20.7
+fastapi==0.115.0
+uvicorn==0.30.0
 openpyxl
 
 
