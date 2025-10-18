@@ -390,7 +390,7 @@ telegram_app.add_handler(conv_handler)
 telegram_app.add_handler(CommandHandler("export", export_data))
 
 # --------- Webhook endpoint ---------
-@app.post("/")
+@app.post("/webhook")
 async def webhook(request: Request):
     update = Update.de_json(await request.json(), telegram_app.bot)
     await telegram_app.process_update(update)
@@ -412,7 +412,7 @@ telegram_app.add_handler(CommandHandler("start", start))
 # --- FastAPI setup ---
 app = FastAPI()
 
-@app.post("/")
+@app.post("/webhook")
 async def receive_update(request: Request):
     try:
         data = await request.json()
