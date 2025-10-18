@@ -401,29 +401,4 @@ async def webhook(request: Request):
 def home():
     return {"status": "Bot running via Vercel"}
 
-# --- Telegram setup ---
-telegram_app = Application.builder().token(TOKEN).build()
-
-async def start(update: Update, context):
-    await update.message.reply_text("Hello! Bot is active.")
-
-telegram_app.add_handler(CommandHandler("start", start))
-
-# --- FastAPI setup ---
-app = FastAPI()
-
-@app.post("/webhook")
-async def receive_update(request: Request):
-    try:
-        data = await request.json()
-        update = Update.de_json(data, telegram_app.bot)
-        await telegram_app.process_update(update)
-    except Exception as e:
-        print(f"Error processing update: {e}")
-        return {"ok": False, "error": str(e)}
-    return {"ok": True}
-
-@app.get("/")
-def home():
-    return {"message": "Bot is running"}
 
