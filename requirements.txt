@@ -3,4 +3,6 @@ gunicorn
 aiohttp
 flask
 openpyxl
+fastapi
+uvicorn
 
