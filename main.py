@@ -363,9 +363,31 @@ app = FastAPI()
 # --- Initialize Telegram Bot Application ---
 application = Application.builder().token(TOKEN).build()
 
-# --- Register Handlers ---
-application.add_handler(conv_handler)
-application.add_handler(CommandHandler("export", export_data))
+conv_handler = ConversationHandler(
+        entry_points=[CommandHandler("start", start)],
+        states={
+            LANG_CHOICE: [CallbackQueryHandler(lang_choice)],
+            MENU: [CallbackQueryHandler(menu_handler)],
+            STU_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_name)],
+            STU_GRADE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_grade)],
+            STU_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_phone)],
+            STU_ADDRESS: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_address)],
+            STU_PREF_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, stu_pref_gender)],
+            TUT_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_name)],
+            TUT_GENDER: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_gender)],
+            TUT_PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_phone)],
+            TUT_GRADES: [MessageHandler(filters.TEXT & ~filters.COMMAND, tut_grades)],
+            TUT_PROFILE_UPLOAD: [MessageHandler(filters.ALL & ~filters.COMMAND, tut_profile_upload)],
+            CONTACT_ADMIN: [MessageHandler(filters.ALL & ~filters.COMMAND, contact_admin)],
+        },
+        fallbacks=[CommandHandler("cancel", cancel)],
+        per_user=True,
+        per_chat=True,
+        allow_reentry=True
+    )
+
+    app.add_handler(conv_handler)
+    app.add_handler(CommandHandler("export", export_data))
 
 # --- Webhook Endpoint ---
 @app.post("/webhook")
