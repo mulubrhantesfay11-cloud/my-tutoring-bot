@@ -387,8 +387,6 @@ conv_handler = ConversationHandler(
     allow_reentry=True
 )
 
-telegram_app.add_handler(conv_handler)
-telegram_app.add_handler(CommandHandler("export", export_data))
 
 # --- Webhook Endpoint ---
 @app.post("/webhook")
